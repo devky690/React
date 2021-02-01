@@ -28,10 +28,8 @@ export default function CounterHooks({ initialCount }) {
 //useState is doing the same thing as the constructor from counter! just
 //in a cleaner way
 //   const [state, setState] = useState({ count: initialCount });
-/* need to use prevState because setState is asynchronous
-so it needs the previous count....this would be if they are
-in the same block like in our Count component, i just showed the first
-//one as an example below...how it would look
+/* need to use prevState because you cant
+change state directly
 */
 /* <button
 onClick={() =>
