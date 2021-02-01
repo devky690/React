@@ -1,0 +1,7 @@
+@import "recipe-list.css";
+
+*,
+*::before,
+*::after {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}

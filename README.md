@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Code Review
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is where i will explain my logic and summarize kyle cook logic
 
-## Available Scripts
+# Structure
+Componetize everything you can, as many as possible, because
+it promotes reuse and its easier to debug
+buttons couldve been compontenized but when is it too small?
+if you would never reuse it or it would become too much work 
+to make another component as it could be tightly coupled with 
+another component
 
-In the project directory, you can run:
+One component per file
 
-### `npm start`
+Use default exports for components (export defaults can
+be renamed since they arent being destructured)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Define state all in one place, at the top of the file
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+group useeffects all together 
 
-### `npm test`
+initialize contextvalue after the hooks
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+then comes the logic ...all the functions you are using
 
-### `npm run build`
+then comes the bottom of the component you returning the component
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+mock data could come after the return, outside the component
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Naming Scheme
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+using handle which leads to some click event
+you should put another function which doesnt have handle naming convention
+inside another function that has that naming convention
 
-### `npm run eject`
+# Spacing Code
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Leave enough lines between code
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Props or Context
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Use props when passing from parent to child, otherwise use context  
+since your passing to multiple components or use context when
+your parent cant pass props to multiple components since they arent
+directly linked 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Seperating State Managers
 
-## Learn More
+seperate state names when using useState because it makes the code alot
+more robust and clean, break up state into as many small pieces 
+as possible like
+what we did with selectedRecipeId and recipes
+...we gave them seperate state managers (with the destructuring)
+but we couldve had one useState and just created an object to manage
+the state of that object
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Seperating LifeCycle Managers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+seperate use effects that have different dependancies
+(with classes you couldnt do this...a lifcycle method had to have
+everything)
 
-### Code Splitting
+# DO NOT MUTATE DIRECTLY
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+do not change state directly, it makes react more robust and less prone
+to errors and also code is more legible...creating an object through
+destructuring to modify the state. React is okay with that
 
-### Analyzing the Bundle Size
+state and props should never be mutated directly 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Additional Tips
+Always use ids with states if you are trying to reference
+...this makes things more consistent so you never accidently
+get two different objects that are trying to reference
+the same thing
 
-### Making a Progressive Web App
+# My Change
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+use onChange instead of onInput to get rid of console error, its not an issue
+but just messy if trying to debug in web console
 
-### Advanced Configuration
+# Next Steps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+(look at his video again for tips on what to do)
+kyle steps to add
+1) create a search box that can filter for search results
+2) add a new section at the body of the form that can add user
+of the recipe...it would be included in recipelist 
+and make multiple pages that deal with professional chefs, and
+amateur chefs 
+3) connect to a database with useEffect which kyle's tutorial
+has with fetch api and useEffect hook and make this a fully functional
+application instead of just saving to local storage
 
-### Deployment
+next weekend:
+Fetch Api, UseEffect hook 13 minutes, react router tutorial dev ed,
+kudvenkat protected routes, prop-types logrocket,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+when im solid, pickup usereducer and start using context api
+and learn all the other useful hooks kyle has in his playlist
+context api can be picked up from academind 
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# My Takeaway
+
+Event handlers were passed as props from parent starting at app level where
+we had our context then from there we passed the function down to
+the child component and then we used helper function to ass
+
+and btw multiple components, not just app can have context!
+
+
+
+# Clearning misconceptions
+
+use state returns a value and a state manager which we can rename and use
+[object, state manager] = useState(default value)
+call state manager to update changes to state of object
+
+update previous state of object when setting state because
+they dont get merged together automatically
+
+you can have multiple state managers
+
+
+
+
