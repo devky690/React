@@ -50,7 +50,7 @@ export default function RecipeEdit({ recipe }) {
       name: "",
       amount: "",
     };
-    handleChange({ ingredients: [...recipe.ingredients] });
+    handleChange({ ingredients: [...recipe.ingredients, newIngredient] });
   }
 
   function handleIngredientDelete(id) {
